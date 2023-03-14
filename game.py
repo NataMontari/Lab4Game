@@ -1,6 +1,9 @@
 """
 Create Your own Adventure
 """
+
+killed_enemies = 0
+
 class Room():
     """Class Point to create a point"""
     def __init__(self, name : str) -> None :
@@ -54,6 +57,9 @@ class Room():
         return self.linked_rooms[direction]
 
 class Enemy:
+    """Enemy creature to interact with"""
+
+
     def __init__(self, name : str) -> None :
         """
         initialize a room object, name
@@ -89,6 +95,11 @@ class Enemy:
     def fight(self, item):
         """Did you win?"""
         return self.weakness ==item
+    
+    def get_defeated(self):
+        global killed_enemies
+        killed_enemies+=1
+        return killed_enemies
     
 
 
