@@ -76,7 +76,7 @@ while dead == False:
                     current_room.character = None
                     if inhabitant.get_defeated() == 2:
                         print("Congratulations, you have vanquished the enemy horde!")
-                            dead = True
+                        dead = True
                 else:
                     # What happens if you lose?
                     print("Oh dear, you lost the fight.")

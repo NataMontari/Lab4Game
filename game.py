@@ -1,7 +1,6 @@
 """
 Create Your own Adventure
 """
-
 killed_enemies = 0
 
 class Room():
@@ -25,7 +24,7 @@ class Room():
         Set character for a room
         """
         self.character = character
-        
+
     def set_item(self, item : "Item") -> None :
         """
         Set item for this room
@@ -43,28 +42,31 @@ class Room():
         Set character for a room
         """
         return self.character
-        
+
     def get_item(self) -> "Item" :
         """
         Set item for this room
         """
         return self.item
-    
+
     def link_room(self, name, direction):
+        """Link a room to a direction"""
         self.linked_rooms[direction] = name
-    
+
     def move(self, direction) -> "Room":
+        """move to another room"""
         return self.linked_rooms[direction]
 
 class Enemy:
     """Enemy creature to interact with"""
 
 
-    def __init__(self, name : str) -> None :
+    def __init__(self, name : str, description) -> None :
         """
         initialize a room object, name
         """
         self.name = name
+        self.description = description
 
     def set_description(self, description : str) -> None :
         """
@@ -87,25 +89,26 @@ class Enemy:
     def describe(self) -> str :
         """Return the enemy description"""
         return self.description
-    
+
     def talk(self):
         """What will the enemy say"""
         return self.conversation
-    
+
     def fight(self, item):
         """Did you win?"""
         return self.weakness ==item
-    
+
     def get_defeated(self):
+        """Check if you've defeated all necessary enemies"""
         global killed_enemies
         killed_enemies+=1
         return killed_enemies
-    
+
 
 
 
 class Item:
-
+    """An item object"""
     def __init__(self, name : str) -> None :
         """
         initialize a room object, name
@@ -119,9 +122,9 @@ class Item:
         self.description = description
 
     def describe(self) -> str :
-        """"""
+        """ Describe the item"""
         return self.description
-    
+
     def get_name(self):
         """Return the enemy description"""
         return self.name
